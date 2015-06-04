@@ -1,3 +1,3 @@
 @ECHO OFF
-Game.exe
+RPG.exe
 PAUSE
