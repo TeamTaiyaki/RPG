@@ -11,6 +11,8 @@
 #include<windows.h>
 #include "file.h"
 
+//#define printf print_story
+
 int Yusha()
 {
 	int c;
