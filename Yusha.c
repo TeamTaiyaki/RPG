@@ -1,23 +1,30 @@
-/*day : 20150602,3,4
+﻿/*
+ * Creation date : 2 June 2015
+ * Last updated  : 5 June 2015
+ * Filename      : Yusha.c
  *
+ * Author(story) : Yusuke Kato
  *
- *Author(Story) : Yusuke Kato
+ * ========================================
+ *       Episode 1: 勇者の旅立ち
+ * ========================================
  *
- *programmer    : Satosi Shimada
  */
- 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<math.h>
-#include<windows.h>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <windows.h>
+
 #include "file.h"
- 
-int Yusha();
+#include "print_screen.h"
 
 //#define printf print_story
 
-int Yusha()
+extern struct player p;
+
+int Yusha(void)
 {
 	int c;
 	int a;
@@ -25,75 +32,75 @@ int Yusha()
 	
 	//PROLOGUE
 	
-	printf("\n���N�O�ɕ������������ɂ���āA���E�͖łт悤�Ƃ��Ă����B\n"
-		   "�����Ŋe���́A���������̂��߂ɌR���������킹�����A\n"
-		   "�����R�̑O�ł͖��͂ł������B\n"
-		   "���Ƃ����Ȃ��Ă͂ƍl���������́h�`���̗E�ҁh��T���o���A\n"
-		   "���̎҂ɖ���������������Ƃɂ����B\n\n\n\n");
-		   
-		   
+	printf("\n半年前に復活した魔王によって、世界は滅びようとしていた。\n"
+		   "そこで各国は、魔王討伐のために軍隊を向かわせたが、\n"
+		   "魔王軍の前では無力であった。\n"
+		   "何とかしなくてはと考えた国王は”伝説の勇者”を探し出し、\n"
+		   "その者に魔王討伐を託すことにした。\n\n\n\n");
+	
+	c = fgetc(stdin);
 	//1 - 1 
 	
 	system("cls");
-	printf("\n%s �͖ڊo�߂��B����������Ă��鑾�z�̌����܂Ԃ����B\n"
-		   "�z�c����o��ƒN�����������ĂԐ�������B\n\n\n", p.name);
-		   
-	printf("�N���Ă�ł��邩[�I��]\n");
+	printf("\n%s は目覚めた。窓から入ってくる太陽の光がまぶしい。\n"
+		   "布団から出ると誰かが自分を呼ぶ声がする。\n\n\n", p.name);
 	
-	printf("1: ��\n"
-	       "2: ��\n"
-	       "3: ���L�̃~�P\n"
-	       "4: �ƂȂ�̎R�c����\n");
-	       
+	printf("誰が呼んでいるか[選択]\n");
+	
+	printf("1: 母\n"
+	       "2: 父\n"
+	       "3: 愛猫のミケ\n"
+	       "4: となりの山田さん\n");
+	
 	scanf("%d",&a);
 	
 	if (a == 1) {
 		system("cls");
-		printf("\n�Ă�ł���͕̂�̂悤���B\n"
-		       "��u�����͂�ł��Ă邩��A�����H�ׂĂ�v\n"
-		       "�e�[�u���̏�ɂ͂����������ȃp���ƃX�[�v�A�T���_������B\n"
-		       "���������܂��A�Ƃ��������X�[�v�����ɉ^�ԁB\n"
-		       "����H�ׂ��u�ԁA���ɂ��̒��𑖂�B\n"
-		       "�I�I�I�I�I �ł��I�I�I�I�I\n");
+		printf("\n呼んでいるのは母のようだ。\n"
+		       "母「朝ごはんできてるから、早く食べてよ」\n"
+		       "テーブルの上にはおいしそうなパンとスープ、サラダがある。\n"
+		       "いただきます、とさっそくスープを口に運ぶ。\n"
+		       "一口食べた瞬間、激痛が体中を走る。\n"
+		       "！！！！！ 毒だ！！！！！\n");
 	} else if (a == 2) {
 		system("cls");
-		printf("\n�Ă�ł���͕̂��̂悤���B\n"
-		       "���u�܂��������`���Ă���Ȃ����v\n"
-		       "�܂������邽�߂ɉƂ̗��Ɍ��������B\n"
-		       "�����̂悤�ɕ����g���Ă܂�������B\n"
-		       "�������A�܂������낤�Ƃ����u�ԁA�܂����͂�����ԁI�I\n"
-		       "�I�I�I�I�I �j�Ђ��ɂ� �I�I�I�I�I\n");
+		printf("\n呼んでいるのは父のようだ。\n"
+		       "父「まき割りを手伝ってくれないか」\n"
+		       "まきを割るために家の裏に向かった。\n"
+		       "いつものように斧を使ってまきを割る。\n"
+		       "しかし、まきを割ろうとした瞬間、まきがはじけ飛ぶ！！\n"
+		       "！！！！！ 破片が痛い ！！！！！\n");
 	} else if (a == 3) {
 		system("cls");
-		printf("\n�Ă�ł���͈̂��L�̃~�P�̂悤���B\n"
-		       "�~�P�u�E�E�E�E�E�E�ɂ�[�v\n"
-		       "�E�E�E�E�E�E�Ȃ��ށE�E�E�E�E\n");
+		printf("\n呼んでいるのは愛猫のミケのようだ。\n"
+		       "ミケ「・・・・・・にゃー」\n"
+		       "・・・・・・なごむ・・・・・\n");
 	} else if (a == 4) {
 		system("cls");
-		printf("\n�Ă�ł���̂͂ƂȂ�̎R�c����̂悤���B\n"
-			   "%s�u����ɂ��́I�I�R�c����A�ǂ�������ł����B\n"
-			   " �R�c����E�E�E�H �ق����܂܂ŁA������������ł���?�v\n"
-			   "�R�c����u�E�E�E�E�E�E�t�t�t�E�E�E�t�n�n�n�n�n�n�n�n�n�n�n�b�I�I�I�v\n"
-			   "%s �u�Ȃ�ł����I�H �ǂ�������ł����I�H�I�H�v\n"
-			   "�R�c����u�����������I�I�I�I�I�I�I�I�v\n"
-			   "%s �u�ȁA�Ȃ񂾂��āI�H�I�H�v\n"
-			   "�R�c����u���E�͂�����Ă������I�I�I�I�I�v\n"
-			   "%s �u�����͂����Ȃ����I�I�I�I�I�v\n\n\n\n"
-			   "�I�I�I�R�c����Ƃ̐퓬�ɓ˓��I�I�I\n",p.name ,p.name, p.name, p.name);
-			   
+		printf("\n呼んでいるのはとなりの山田さんのようだ。\n"
+			   "%s「こんにちは！！山田さん、どうしたんですか。\n"
+			   " 山田さん・・・？ 黙ったままで、何かあったんですか?」\n"
+			   "山田さん「・・・・・・フフフ・・・フハハハハハハハハハハハッ！！！」\n"
+			   "%s 「なんですか！？ どうしたんですか！？！？」\n"
+			   "山田さん「私が魔王だ！！！！！！！！」\n"
+			   "%s 「な、なんだって！？！？」\n"
+			   "山田さん「世界はもらっていくぞ！！！！！」\n"
+			   "%s 「そうはさせないっ！！！！！」\n\n\n\n"
+			   "！！！山田さんとの戦闘に突入！！！\n",p.name ,p.name, p.name, p.name);
+	}
 	//2 - 2
 	
-	printf("�^�P�I�u���[���I�I �N���Ă邩�[�[���I�I�I�v\n"
-	       "�e�F�̃^�P�I�̌ĂԐ�������B����Ȃɒ������ɗ���Ȃ�Ē������B\n"
-	       "�^�P�I�u�m���Ă邩�I�I�I������|����̂́h�`���̗E�ҁh�����Ȃ񂾂��Ă�I�I�I\n"
-	       "        �h�`���̗E�ҁh���āA%s �̂��Ƃ���ȁI�H\n");
-	       
-	printf("���Ȃ��̕Ԏ��́H [�I��]\n\n\n");
+	printf("タケオ「おーい！！ 起きてるかーーっ！！！」\n"
+	       "親友のタケオの呼ぶ声がする。こんなに朝早くに来るなんて珍しい。\n"
+	       "タケオ「知ってるか！！！魔王を倒せるのは”伝説の勇者”だけなんだってよ！！！\n"
+	       "        ”伝説の勇者”って、%s のことだよな！？\n", p.name);
 	
-	printf("1,�������A��������B\n"
-	       "2,����Ȃ킯�Ȃ��B\n"
-	       "3,�h�`���̗E�ҁh�A����̓^�P�I�A���O�̂��Ƃ��I�I�I\n");
-	       
+	printf("あなたの返事は？ [選択]\n\n\n");
+	
+	printf("1,もちろん、そうだよ。\n"
+	       "2,そんなわけない。\n"
+	       "3,”伝説の勇者”、それはタケオ、お前のことだ！！！\n");
+	
 	scanf("%d",&b);
 	
 	if (b == 1) {
@@ -101,14 +108,13 @@ int Yusha()
 	} else if (b == 2) {
 		
 	} else {
+		
 	}
-	
 	
 	player_write(p);
 	
 	printf("Please Enter key\n");
+	c = fgetc(stdin);
 	
-	c = fgetc(stdin);	   
-	
-	return;
- }
+	return 0;
+}

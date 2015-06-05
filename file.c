@@ -13,12 +13,13 @@ int player_write(struct player p)
 		return -1;
 	}
 	
-	fprintf(fp, "%d\n%s\n%d\n%d\n%d\n",
+	fprintf(fp, "%d\n%s\n%d\n%d\n%d\n%d\n",
 		p.level,
 		p.name,
 		p.age,
 		p.job,
-		p.sex);
+		p.sex,
+		p.money);
 	
 	fclose(fp);
 	
@@ -36,12 +37,13 @@ int player_read(struct player *p)
 		return -1;
 	}
 	
-	fscanf(fp, "%d\n%s\n%d\n%d\n%d\n",
+	fscanf(fp, "%d\n%s\n%d\n%d\n%d\n%d\n",
 		&(p->level),
 		&(p->name),
 		&(p->age),
 		&(p->job),
-		&(p->sex));
+		&(p->sex),
+		&(p->money));
 	
 	fclose(fp);
 	

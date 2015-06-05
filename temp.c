@@ -1,4 +1,5 @@
 
+/*
 int XXX(void)
 {
 	int story;
@@ -75,3 +76,5 @@ int XXX(void)
 	
 	return ;
 }
+
+*/

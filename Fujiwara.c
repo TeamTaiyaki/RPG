@@ -7,6 +7,8 @@
 #include "file.h"
 #include "print_screen.h"
 
+extern struct player p;
+
 int Fujiwara(void)
 {
 	int i;

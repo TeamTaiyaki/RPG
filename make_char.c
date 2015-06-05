@@ -11,6 +11,11 @@ int make_charactor(struct player *p)
 	
 	fflush(stdin);
 	
+	// 所持金を 0 に初期化
+	p->money = 0;
+	// レベルを 1 に初期化
+	p->level = 1;
+	
 	/* 名前の入力 */
 	printf("キャラクターを作成します\n");
 	printf("名前を教えてね♪ > ");
@@ -19,6 +24,7 @@ int make_charactor(struct player *p)
 
 	printf("%s かぁ～!!! いい名前だね♪\n", name);
 
+	/* 年齢の入力 */
 	for(;;) {
 		printf("何歳なのっっ♪ > ");
 		fgets(buf, sizeof(buf), stdin);
@@ -29,6 +35,7 @@ int make_charactor(struct player *p)
 
 	printf("%d歳なんだー\n", *age);
 	
+	/* 性別の入力 */
 	for(;;) {
 		printf("どっちかなぁ？\n 1:男 2:女の子 > ");
 		fgets(buf, sizeof(buf), stdin);
@@ -37,21 +44,22 @@ int make_charactor(struct player *p)
 		printf("ごめんね！よく聞こえなかった、もう一度教えて！！\n");
 	}
 
+	/* 職業の入力 */
 	for(;;) {
 		printf("職業をえらんで\n"
 			"\t1: 勇者\n"
-			"\t2: Wizard\n"
-			"\t3: NEET\n"
-			"\t4: 学生\n"
-			"\t5: Knight\n"
+			"\t2: 魔王（シューベルト作）\n"
+			"\t3: 徳川家光\n"
+			"\t4: 学生（のふりをしたスパイ）\n"
+			"\t5: 勇者に憧れたナイト\n"
 			"\t6: たこ焼き職人\n"
-			"\t7: スーパーハッカー藤原（スパコン>>８４<<台所持）\n"
-			"\t8: 狂気な目をした鳥山（鳥山 あきr...a....「誠だよ！！！！！」\n"
+			"\t7: スーパーハッカー藤原（スパコン８４台所持）\n"
+			"\t8: 狂気な目をした鳥（以下略）\n"
 			"\t9: たこ焼き（そのもの）\n"
 			"\t10: 親の脛をかじり続けて早２４年の独身男性（ps.童貞）。\n"
-			"\t11: 会社員（課長）のようなNEET\n"
-			"\t12: 脱サラしてコンビニの店長になったけど病気を患ってやめて、今はNEET\n"
-			"\t0: 松佐川 航\n");
+			"\t11: 会社員（課長になりたいと願い続けて１３年）のようなニート\n"
+			"\t12: 脱サラしてコンビニの店長になったけど病気を患ってやめて、今はニート\n"
+			"\t0: 松佐(さまつ)川 航\n");
 		fgets(buf, sizeof(buf), stdin);
 		*job = atoi(buf);
 		if(*job >= 0 && *job <= 12) break;

@@ -24,6 +24,7 @@
 #include "file.h"
 #include "print_screen.h"
 
+/* Global variable */
 struct player p;
 
 void main(void)
@@ -41,17 +42,21 @@ make_char:
 		printf("キャラクター作成完了！\n");
 	} else {
 		printf("キャラクターデータを検出！\nロード中.......\n"
-			"\tレベル: %d\n"
-			"\t名前: %s\n"
-			"\t職業: %d\n"
-			"\t年齢: %d\n"
-			"\t性別: %d\n",
+			"+----------------------+\n"
+			"|レベル | %d\n"
+			"|名前   | %s\n"
+			"|職業   | %d\n"
+			"|年齢   | %d\n"
+			"|性別   | %d\n"
+			"+----------------------+\n",
 			p.level, p.name, p.job, p.age, p.sex);
 		printf("このデータでプレイしますか？\n"
 			"1: Yes, 0: No > ");
 		scanf("%d", &con);
 		if(!con) goto make_char;
 	}
+	
+	system("cls");
 	
 	fflush(stdin);
 	/* 職業によってストーリーを分岐 */
@@ -63,6 +68,7 @@ make_char:
 		Fujiwara();
 		break;
 	default:
+		printf("ストーリーのロードに失敗しました\n\n");
 		break;
 	}
 	

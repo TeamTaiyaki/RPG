@@ -8,10 +8,9 @@ struct player {
 	int job;
 	int sex;
 	int age;
+	int money;
 };
 
 int Yusha();
 int Fujiwara();
 int make_charactor(struct player *p);
-
-struct player p;

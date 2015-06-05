@@ -4,7 +4,8 @@
  *
  * Writer:  Yusuke Kato
  */
- 
+
+/*
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -32,4 +33,6 @@ int Yuusha()
 	c = fgetc(stdin);	   
 	
 	return;
- }
+}
+
+*/
