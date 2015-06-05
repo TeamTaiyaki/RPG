@@ -15,6 +15,8 @@
  
 int Yusha();
 
+//#define printf print_story
+
 int Yusha()
 {
 	int c;
