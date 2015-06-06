@@ -76,8 +76,8 @@ make_char:
 	_getch();
 	
 	system("cls");
-	printf("Continue: 1\n");
-	printf("Exit    : 0\n");
+	printf("‘±‚¯‚é: 1\n");
+	printf("‚â‚ß‚é: 0\n");
 	scanf("%d", &con);
 	if(con == 1) goto start_game;
 	
