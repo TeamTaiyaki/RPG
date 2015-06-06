@@ -21,6 +21,7 @@ int make_charactor(struct player *p)
 	printf("–¼‘O‚ğ‹³‚¦‚Ä‚Ëô > ");
 	fgets(buf, sizeof(buf), stdin);
 	strncpy(name, buf, strlen(buf) - 1);
+	name[strlen(buf) -1] = '\0';
 
 	printf("%s ‚©‚Ÿ`!!! ‚¢‚¢–¼‘O‚¾‚Ëô\n", name);
 
