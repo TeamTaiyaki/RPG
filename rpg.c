@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  * Explanation : This game has created since 1 June.
  *
  * Title       : Happy Story
@@ -34,23 +34,23 @@ void main(void)
 start_game:
 	
 	system("cls");
-	printf("ƒQ[ƒ€‚ğŠJn‚µ‚Ü‚·B\n");
+	printf("ã‚²ãƒ¼ãƒ ã‚’é–‹å§‹ã—ã¾ã™ã€‚\n");
 	
 	if(player_read(&p) != 0) {
 make_char:
 		make_charactor(&p);
-		printf("ƒLƒƒƒ‰ƒNƒ^[ì¬Š®—¹I\n");
+		printf("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ä½œæˆå®Œäº†ï¼\n");
 	} else {
-		printf("ƒLƒƒƒ‰ƒNƒ^[ƒf[ƒ^‚ğŒŸoI\nƒ[ƒh’†.......\n"
+		printf("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’æ¤œå‡ºï¼\nãƒ­ãƒ¼ãƒ‰ä¸­.......\n"
 			"+----------------------+\n"
-			"|ƒŒƒxƒ‹ | %d\n"
-			"|–¼‘O   | %s\n"
-			"|E‹Æ   | %d\n"
-			"|”N—î   | %d\n"
-			"|«•Ê   | %d\n"
+			"|ãƒ¬ãƒ™ãƒ« | %d\n"
+			"|åå‰   | %s\n"
+			"|è·æ¥­   | %d\n"
+			"|å¹´é½¢   | %d\n"
+			"|æ€§åˆ¥   | %d\n"
 			"+----------------------+\n",
 			p.level, p.name, p.job, p.age, p.sex);
-		printf("‚±‚Ìƒf[ƒ^‚ÅƒvƒŒƒC‚µ‚Ü‚·‚©H\n"
+		printf("ã“ã®ãƒ‡ãƒ¼ã‚¿ã§ãƒ—ãƒ¬ã‚¤ã—ã¾ã™ã‹ï¼Ÿ\n"
 			"1: Yes, 0: No > ");
 		scanf("%d", &con);
 		if(!con) goto make_char;
@@ -59,25 +59,37 @@ make_char:
 	system("cls");
 	
 	fflush(stdin);
-	/* E‹Æ‚É‚æ‚Á‚ÄƒXƒg[ƒŠ[‚ğ•ªŠò */
+	/* è·æ¥­ã«ã‚ˆã£ã¦ã‚¹ãƒˆãƒ¼ãƒªãƒ¼ã‚’åˆ†å² */
 	switch(p.job) {
+	case 0:
+		break;
 	case 1:
 		Yusha();
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4:
+		break;
+	case 5:
+		break;
+	case 6:
 		break;
 	case 7:
 		Fujiwara();
 		break;
 	default:
-		printf("ƒXƒg[ƒŠ[‚Ìƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½\n\n");
+		printf("ã‚¹ãƒˆãƒ¼ãƒªãƒ¼ã®ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸ\n\n");
 		break;
 	}
 	
-	printf("‚Ç‚ê‚©ƒL[‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢...");
+	printf("ã©ã‚Œã‹ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãã ã•ã„...");
 	_getch();
 	
 	system("cls");
-	printf("‘±‚¯‚é: 1\n");
-	printf("‚â‚ß‚é: 0\n");
+	printf("ç¶šã‘ã‚‹: 1\n");
+	printf("ã‚„ã‚ã‚‹: 0\n");
 	scanf("%d", &con);
 	if(con == 1) goto start_game;
 	
