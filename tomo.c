@@ -1,3 +1,0 @@
-/*
- * Writen by Tomotaka Suzuki
- */
