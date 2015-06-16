@@ -21,6 +21,7 @@
 #include <conio.h>
 #include <stdarg.h>
 
+#include "rpg.h"
 #include "file.h"
 #include "print_screen.h"
 
@@ -33,7 +34,9 @@ void main(void)
 	
 start_game:
 	
+#ifdef WINDOWS
 	system("cls");
+#endif // WINDOWS
 	printf("ゲームを開始します。\n");
 	
 	if(player_read(&p) != 0) {
@@ -75,7 +78,9 @@ make_char:
 	printf("どれかキーを押してください...");
 	_getch();
 	
+#ifdef WINDOWS
 	system("cls");
+#endif // WINDOWS
 	printf("続ける: 1\n");
 	printf("やめる: 0\n");
 	scanf("%d", &con);

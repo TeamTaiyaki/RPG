@@ -4,6 +4,7 @@
  */
 
 #include <stdio.h>
+#include "rpg.h"
 #include "file.h"
 #include "print_screen.h"
 
