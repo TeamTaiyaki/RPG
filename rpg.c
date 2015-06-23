@@ -17,8 +17,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <windows.h>
-#include <conio.h>
+#ifdef WINDOWS
+	#include <windows.h>
+	#include <conio.h>
+#endif
 #include <stdarg.h>
 
 #include "rpg.h"
@@ -34,9 +36,9 @@ void main(void)
 	
 start_game:
 	
-#ifdef WINDOWS
+#ifdef LINUX
 	system("cls");
-#endif // WINDOWS
+#endif // LINUX
 	printf("ゲームを開始します。\n");
 	
 	if(player_read(&p) != 0) {
@@ -59,7 +61,9 @@ make_char:
 		if(!con) goto make_char;
 	}
 	
+#ifdef LINUX
 	system("cls");
+#endif
 	
 	fflush(stdin);
 	/* 職業によってストーリーを分岐 */
@@ -78,9 +82,9 @@ make_char:
 	printf("どれかキーを押してください...");
 	_getch();
 	
-#ifdef WINDOWS
+#ifdef LINUX
 	system("cls");
-#endif // WINDOWS
+#endif // LINUX
 	printf("続ける: 1\n");
 	printf("やめる: 0\n");
 	scanf("%d", &con);

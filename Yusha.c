@@ -19,12 +19,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <windows.h>
+#ifdef WINDOWS
+	#include <windows.h>
+#endif
 
 #include "file.h"
 #include "print_screen.h"
 
 //#define printf print_story
+#ifdef LINUX
+	#define system("cls") ""
+#endif
 
 extern struct player p;
 
