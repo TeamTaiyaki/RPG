@@ -1,5 +1,8 @@
 #include <stdio.h>
 
-int main()
+int Tomo(int t)
 {
+	printf("加藤、変なコミットするなよぉ");
 	
+	return 0;
+}
