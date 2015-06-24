@@ -1,4 +1,7 @@
 
+int player_write(struct player p);
+int player_read(struct player *);
+
 struct player {
 	int level;
 	char name[1024];
@@ -7,9 +10,6 @@ struct player {
 	int age;
 	int money;
 };
-
-int player_write(struct player p);
-int player_read(struct player *);
 
 int Yusha();
 int Fujiwara();

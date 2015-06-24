@@ -1,8 +1,4 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-#include "rpg.h"
 #include "file.h"
 
 int make_charactor(struct player *p)

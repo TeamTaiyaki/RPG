@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "rpg.h"
 #include "file.h"
 #include "print_screen.h"
 
@@ -36,13 +35,11 @@ int print_story(char *msg, ...)
 			var_count++;
 		}
 	}
-	//va_start(list, var_count);
+	va_start(list, var_count);
 	
 	//var_args(list, int);
 	
-#ifdef LINUX
 	system("cls");
-#endif
 	printf("----------------------------------------------------------------------\n");
 	//printf("HP | MY: %5d    || EMEMY: %5d  \n", my_hp, ememy_hp);
 	//printf("----------------------------------------------------------------------\n");
@@ -67,7 +64,7 @@ int print_story(char *msg, ...)
 	
 	printf("\n----------------------------------------------------------------------\n");
 	
-	//va_end(list);
+	va_end(list);
 	
 	return 0;
 }
