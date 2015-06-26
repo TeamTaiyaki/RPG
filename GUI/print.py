@@ -21,7 +21,6 @@ class Game(object):
 		clock = pygame.time.Clock()
 		self.screen = pygame.display.set_mode((640, 480))
 		self.screen.fill((255, 255, 255))
-		self.print_font("Welcome to Gaming world!")
 		self.file_story = codecs.open("story.txt", "r", "utf-8")
 		
 		self.load_img_title()
