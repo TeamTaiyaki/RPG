@@ -29,14 +29,15 @@ class Game(object):
 			pygame.display.update()
 			for event in pygame.event.get():
 				if event.type == QUIT:
-					#sys.exit()
-					return
+					sys.exit()
+					#return
 				elif event.type == pygame.KEYDOWN and \
 						event.key == pygame.K_ESCAPE:
-					#sys.exit()
-					return
+					sys.exit()
+					#return
 				elif event.type == pygame.KEYDOWN and \
 						event.key == pygame.K_F2:
+					# フルスクリーンとウィンドウを F2キーで切り替え
 					f_screen_full = not f_screen_full
 					if f_screen_full == True:
 						self.screen = pygame.display.set_mode(screen_size, FULLSCREEN)
@@ -54,7 +55,10 @@ class Game(object):
 		text = f_sans_serif.render(string, True, color, bgcolor)
 		self.screen.blit(text, pos)
 		pygame.display.update()
-		#self.pos_y += self.font_size
+		self.pos_y += size
+		y = self.screen.get_size()
+		if self.pos_y > y:
+			self.pos = 0
 
 	def puts_message(self):
 		str = self.file_story.readline()
@@ -74,11 +78,7 @@ def get_screen_size():
 
 ### ----------- main ----------- ###
 if __name__ == '__main__':
-	#screen_size = (640, 480)
 	pygame.init()
-	#screen = pygame.display.set_mode(screen_size)
 	f_screen_size = get_screen_size()
-	#fullscreen = pygame.display.set_mode(f_screen_size, FULLSCREEN)
 	game = Game()
-	#game.main(screen, fullscreen)
 	game.main(f_screen_size)
