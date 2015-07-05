@@ -28,9 +28,12 @@ class Game(object):
 		self.play_bgm_title()
 		
 		story = 0 # 0 is title screen
+		f = 0
+		interval = 0
 		
 		while True:
-			clock.tick(60) # 60 fps
+			time = clock.tick(60) # 60 fps
+			time_s = time / 1000.0
 			pygame.display.update()
 			for event in pygame.event.get():
 				if event.type == QUIT:
@@ -59,13 +62,34 @@ class Game(object):
 						story += 1
 						self.play_bgm_game()
 						self.load_img_story1()
+						self.make_msgarea()
 					elif story == 1:
 						self.puts_message()
-					
+			
+			if story == 0:
+				interval += time_s
+				if interval >= 0.7 and f == 0:
+					interval = 0
+					self.load_img_title()
+					f = 1
+				elif interval >= 0.2 and f == 1:
+					interval = 0
+					self.load_img_gamestart()
+					f = 0
+		
 		self.file_story.close()
 	
+	# screen
+	def make_msgarea(self):
+		screen_size = self.screen.get_size()
+		self.msgarea = pygame.Surface((screen_size[0] / 5 * 4, screen_size[1] / 4))
+		self.msgarea.fill((0, 100, 0))
+		pos = (screen_size[0] - (int(screen_size[0] * 0.9)), screen_size[1] - (int(screen_size[1] * 0.2)))
+		self.screen.blit(self.msgarea, pos)
+		#self.msgarea = msg
+	
 	# print
-	def print_font(self, string, color = (0, 0, 0), size = 18, bgcolor = (255, 255, 255)):
+	def print_font_free(self, string, color = (0, 0, 0), size = 18, bgcolor = (255, 255, 255)):
 		pos = (0, self.pos_y)
 		f_sans_serif = pygame.font.Font("IPAexfont/ipaexg.ttf", size)
 		if bgcolor == (255, 255, 255):
@@ -76,8 +100,24 @@ class Game(object):
 		pygame.display.update()
 		self.pos_y += size
 		y = self.screen.get_size()
-		if self.pos_y > y:
-			self.pos = 0
+		if self.pos_y > y[1]:
+			self.pos_y = 0
+	
+	def print_font(self, string, color = (0, 0, 0), size = 18, bgcolor = (255, 255, 255)):
+		""" print to message area """
+		if self.msgarea == None:
+			return
+		pos = (430, 300)
+		f_sans_serif = pygame.font.Font("IPAexfont/ipaexg.ttf", size)
+		if bgcolor == (255, 255, 255):
+			text = f_sans_serif.render(string, True, color)
+		else:
+			text = f_sans_serif.render(string, True, color, bgcolor)
+		self.msgarea.blit(text, pos)
+		screen_size = self.screen.get_size()
+		pos = (screen_size[0] - (int(screen_size[0] * 0.9)), screen_size[1] - (int(screen_size[1] * 0.2)))
+		self.screen.blit(self.msgarea, pos)
+		pygame.display.update()
 	
 	def puts_message(self):
 		str = self.file_story.readline()
@@ -85,6 +125,7 @@ class Game(object):
 		str = str.replace("\r", "")
 		str = str.replace("\t", "    ")
 		self.print_font(str, (200, 0, 0))
+		self.print_font_free(str, (200, 0, 255))
 	
 	# sound
 	def play_bgm_game(self):
@@ -102,7 +143,7 @@ class Game(object):
 		pygame.display.update()
 	
 	def load_img_gamestart(self):
-		msgimg = pygame.image.load("image/game_start1.png").convert()
+		msgimg = pygame.image.load("image/game_start2.png").convert_alpha()
 		x = ( self.screen_x - msgimg.get_size()[0] ) / 2
 		y = ( self.screen_y - msgimg.get_size()[1] ) / 2
 		self.screen.blit(msgimg, (x, y))
