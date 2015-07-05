@@ -5,21 +5,28 @@ import pygame
 from pygame.locals import * # constant value of pygame
 import sys
 import codecs
-# In Windows
-import ctypes
+import os
+
+if os.name == 'nt':
+	# In Windows
+	import ctypes
+elif os.name == 'posix':
+	# In Linux, Macos
+	pass
 
 class Game(object):
 	def __init__(self):
 		title = '勇者の旅立ち'
 		pygame.display.set_caption(title)
 		self.pos_y = 0
+		self.pos_msg_y = 0
 	
 	def main(self, screen_size):
 		f_screen_full = False
 		self.screen_x = 640
 		self.screen_y = 480
 		clock = pygame.time.Clock()
-		self.screen = pygame.display.set_mode((640, 480))
+		self.screen = pygame.display.set_mode((self.screen_x, self.screen_y))
 		self.screen.fill((255, 255, 255))
 		self.file_story = codecs.open("story.txt", "r", "utf-8")
 		
@@ -82,7 +89,8 @@ class Game(object):
 	# screen
 	def make_msgarea(self):
 		screen_size = self.screen.get_size()
-		self.msgarea = pygame.Surface((screen_size[0] / 5 * 4, screen_size[1] / 4))
+		self.msgarea_size = (screen_size[0] / 5 * 4, 18 * 5) #screen_size[1] / 4)
+		self.msgarea = pygame.Surface(self.msgarea_size)
 		self.msgarea.fill((0, 100, 0))
 		pos = (screen_size[0] - (int(screen_size[0] * 0.9)), screen_size[1] - (int(screen_size[1] * 0.2)))
 		self.screen.blit(self.msgarea, pos)
@@ -97,7 +105,6 @@ class Game(object):
 		else:
 			text = f_sans_serif.render(string, True, color, bgcolor)
 		self.screen.blit(text, pos)
-		pygame.display.update()
 		self.pos_y += size
 		y = self.screen.get_size()
 		if self.pos_y > y[1]:
@@ -107,17 +114,22 @@ class Game(object):
 		""" print to message area """
 		if self.msgarea == None:
 			return
-		pos = (430, 300)
+		pos = (430, 200)
+		pos_msg = (0, self.pos_msg_y);
 		f_sans_serif = pygame.font.Font("IPAexfont/ipaexg.ttf", size)
 		if bgcolor == (255, 255, 255):
 			text = f_sans_serif.render(string, True, color)
 		else:
 			text = f_sans_serif.render(string, True, color, bgcolor)
-		self.msgarea.blit(text, pos)
+
+		self.msgarea.blit(text, pos_msg)
 		screen_size = self.screen.get_size()
 		pos = (screen_size[0] - (int(screen_size[0] * 0.9)), screen_size[1] - (int(screen_size[1] * 0.2)))
 		self.screen.blit(self.msgarea, pos)
-		pygame.display.update()
+		self.pos_msg_y += size
+		if (self.pos_msg_y + size) >= self.msgarea_size[1]:
+			self.msgarea.scroll(0, -18)
+			self.pos_msg_y -= size
 	
 	def puts_message(self):
 		str = self.file_story.readline()
@@ -125,7 +137,6 @@ class Game(object):
 		str = str.replace("\r", "")
 		str = str.replace("\t", "    ")
 		self.print_font(str, (200, 0, 0))
-		self.print_font_free(str, (200, 0, 255))
 	
 	# sound
 	def play_bgm_game(self):
@@ -156,8 +167,13 @@ class Game(object):
 	
 
 def get_screen_size():
-	user32 = ctypes.windll.user32
-	screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+	if os.name == 'nt': #Windows
+		user32 = ctypes.windll.user32
+		screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+	elif os.name == 'posix': #Linux
+		screensize = 640, 480
+	else:
+		screensize = 640, 480
 	return screensize
 
 ### ----------- main ----------- ###
