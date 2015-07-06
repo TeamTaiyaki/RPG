@@ -136,7 +136,7 @@ class Game(object):
 		str = str.replace("\n", "")
 		str = str.replace("\r", "")
 		str = str.replace("\t", "    ")
-		self.print_font(str, (200, 0, 0))
+		self.print_font(str, (0, 0, 0))
 	
 	# sound
 	def play_bgm_game(self):
