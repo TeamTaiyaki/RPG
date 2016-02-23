@@ -15,20 +15,20 @@
 #include <math.h>
 #include <windows.h>
 
-#include "file.h"
-#include "print_screen.h"
+//#include "file.h"
+//#include "print_screen.h"
 
 //#define printf print_story
 
 extern struct player p;
 
-int Yusha(void)
+int yusha(void)
 {
 	int c;
 	int a;
 	int b;
 	
-	system("cls");
+	//system("cls");
 	printf("\n\n\n\n\n"
 	       "		     ================================== \n"
 	       "		           Episode 1: 勇者の旅立ち      \n"
@@ -74,7 +74,7 @@ int Yusha(void)
 			 "  騎 士   「しかし、魔王の城に入ったというのに魔物の一体も出てきませんな。\n"
 			 "	    これはどういうことでしょう。」\n\n"
 			 );
-	
+	}
 	/*
 	 *登場人物
 	 *
